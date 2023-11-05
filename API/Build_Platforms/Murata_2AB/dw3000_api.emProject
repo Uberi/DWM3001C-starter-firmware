@@ -1,0 +1,286 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="dw3000_api" target="8" version="2">
+  <project Name="dw3000_api">
+    <configuration
+      Name="Common"
+      arm_architecture="v7EM"
+      arm_core_type="Cortex-M4"
+      arm_endian="Little"
+      arm_fp_abi="Hard"
+      arm_fpu_type="FPv4-SP-D16"
+      arm_keep_preprocessor_output="No"
+      arm_linker_heap_size="8192"
+      arm_linker_process_stack_size="0"
+      arm_linker_stack_size="8192"
+      arm_linker_variant="GNU"
+      arm_simulator_memory_simulation_parameter="RX 00000000,00100000,FFFFFFFF;RWX 20000000,00040000,CDCDCDCD"
+      arm_target_device_name="nRF52840_xxAA"
+      arm_target_interface_type="SWD"
+      build_quietly="No"
+      build_treat_warnings_as_errors="No"
+      c_additional_options=""
+      c_preprocessor_definitions="BOARD_PCA10056 ;CONFIG_GPIO_AS_PINRESET;FLOAT_ABI_HARD;INITIALIZE_USER_SECTIONS;NO_VTOR_CONFIG;NRF52840_XXAA;DEBUG"
+      c_user_include_directories="$(ProjectDir)/Source/config;$(ProjectDir)/Source/platform;$(NordicSDKDir)/components/drivers_nrf/nrf_soc_nosd;$(NordicSDKDir)/components/boards;$(NordicSDKDir)/components/toolchain/cmsis/include;$(NordicSDKDir)/components/libraries/balloc;$(NordicSDKDir)/components/libraries/ringbuf;$(NordicSDKDir)/components/libraries/log;$(NordicSDKDir)/components/libraries/log/src;$(NordicSDKDir)/components/libraries/memobj;$(NordicSDKDir)/components/libraries/util;$(NordicSDKDir)/components/libraries/atomic;$(NordicSDKDir)/components/libraries/delay;$(NordicSDKDir)/components/libraries/experimental_section_vars;$(NordicSDKDir)/components/libraries/strerror;$(NordicSDKDir)/modules/nrfx;$(NordicSDKDir)/modules/nrfx/hal;$(NordicSDKDir)/modules/nrfx/mdk;$(NordicSDKDir)/modules/nrfx/drivers/include;$(NordicSDKDir)/integration/nrfx;$(NordicSDKDir)/integration/nrfx/legacy;$(NordicSDKDir)/external/fprintf;$(DW3000APIDir)/Src;$(DW3000APIDir)/Src/examples/examples_info;$(DW3000APIDir)/Src/examples/shared_data;$(DW3000APIDir)/Src/MAC_802_15_4;$(DW3000APIDir)/Src/MAC_802_15_8;$(DW3000APIDir)/Shared/dwt_uwb_driver/Inc"
+      debug_register_definition_file="$(NordicSDKDir)/modules/nrfx/mdk/nrf52840.svd"
+      debug_target_connection="J-Link"
+      gcc_all_warnings_command_line_options=""
+      gcc_c_language_standard="c11"
+      gcc_cplusplus_language_standard="c++11"
+      gcc_debugging_level="Level 3"
+      gcc_enable_all_warnings="No"
+      gcc_entry_point="Reset_Handler"
+      gcc_optimization_level="Level 0"
+      link_linker_script_file="Setup/SEGGER_Flash.icf"
+      linker_additional_options="--whole-archive;$(DW3000APIDir)/Shared/dwt_uwb_driver/lib/libdwt_uwb_driver-m4-hfp-6.0.7.a;--no-whole-archive"
+      linker_output_format="hex"
+      linker_printf_fmt_level="long"
+      linker_printf_fp_enabled="Double"
+      linker_printf_width_precision_supported="Yes"
+      linker_scanf_fmt_level="long"
+      linker_section_placement_file="$(ProjectDir)/flash_placement.xml"
+      linker_section_placement_macros="FLASH_PH_START=0x0 ;FLASH_PH_SIZE=0x100000;RAM_PH_START=0x20000000;RAM_PH_SIZE=0x40000;FLASH_START=0x0;FLASH_SIZE=0x100000;FCONFIG_START=0x10000;FCONFIG_SIZE=0x400;DEFAULT_CONFIG_START=0x10500;DEFAULT_CONFIG_SIZE=0x400;INIT_START=0x12000;RAM_START=0x20000000;RAM_SIZE=0x40000"
+      linker_section_placements_segments="FLASH RX 0x0 0x100000;RAM1 RWX 0x20000000 0x40000"
+      macros="NordicSDKDir=sdk;DW3000APIDir=../..;CMSIS_CONFIG_TOOL=$(NordicSDKDir)/external_tools/cmsisconfig/CMSIS_Configuration_Wizard"
+      project_can_build_in_parallel="Yes"
+      project_directory=""
+      project_type="Executable"
+      use_compiler_driver="No" />
+    <folder Name="SEGGER">
+      <file file_name="SEGGER/SEGGER_RTT.c">
+        <configuration Name="Debug" build_exclude_from_build="No" />
+      </file>
+      <file file_name="SEGGER/SEGGER_RTT.h">
+        <configuration Name="Debug" build_exclude_from_build="No" />
+      </file>
+      <file file_name="SEGGER/SEGGER_RTT_Conf.h">
+        <configuration Name="Debug" build_exclude_from_build="No" />
+      </file>
+      <file file_name="SEGGER/SEGGER_RTT_Syscalls_SES.c">
+        <configuration Name="Debug" build_exclude_from_build="No" />
+      </file>
+    </folder>
+    <folder Name="Setup">
+      <file file_name="Setup/SEGGER_Flash.icf">
+        <configuration Name="Debug" build_exclude_from_build="No" />
+      </file>
+    </folder>
+    <folder Name="Source">
+      <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
+      <folder Name="platform">
+        <file file_name="Source/platform/deca_mutex.c" />
+        <file file_name="Source/platform/deca_sleep.c" />
+        <file file_name="Source/platform/deca_spi.c" />
+        <file file_name="Source/platform/deca_spi.h" />
+        <file file_name="Source/platform/port.c" />
+        <file file_name="Source/platform/port.h" />
+        <file file_name="Source/platform/deca_probe_interface.c" />
+      </folder>
+      <configuration
+        Name="Debug"
+        c_user_include_directories=".;./Source/platform" />
+      <file file_name="Source/main.c" />
+      <folder Name="examples">
+        <folder Name="ex_00a_reading_dev_id">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_00a_reading_dev_id/read_dev_id.c" />
+        </folder>
+        <folder Name="ex_01a_simple_tx">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_01a_simple_tx/simple_tx.c" />
+        </folder>
+        <folder Name="ex_02a_simple_rx">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_02a_simple_rx/simple_rx.c" />
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_02a_simple_rx/simple_rx_nlos.c" />
+        </folder>
+        <folder Name="ex_06a_ss_twr_initiator">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_06a_ss_twr_initiator/ss_twr_initiator.c" />
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_06a_ss_twr_initiator/ss_twr_initiator_sts.c" />
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_06a_ss_twr_initiator/ss_twr_initiator_sts_no_data.c" />
+        </folder>
+        <folder Name="ex_06b_ss_twr_responder">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_06b_ss_twr_responder/ss_twr_responder.c" />
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_06b_ss_twr_responder/ss_twr_responder_sts.c" />
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_06b_ss_twr_responder/ss_twr_responder_sts_no_data.c" />
+        </folder>
+        <folder Name="examples_info">
+          <file file_name="$(DW3000APIDir)/Src/examples/examples_info/example_info.c" />
+        </folder>
+        <folder Name="shared_data">
+          <file file_name="$(DW3000APIDir)/Src/examples/shared_data/shared_functions.c" />
+        </folder>
+        <folder Name="ex_01h_simple_tx_pdoa">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_01h_simple_tx_pdoa/simple_tx_pdoa.c" />
+        </folder>
+        <folder Name="ex_02h_simple_rx_pdoa">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_02h_simple_rx_pdoa/simple_rx_pdoa.c" />
+        </folder>
+        <folder Name="ex_04a_cont_wave">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_04a_cont_wave/continuous_wave.c" />
+        </folder>
+        <folder Name="ex_04b_cont_frame">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_04b_cont_frame/continuous_frame.c" />
+        </folder>
+        <folder Name="ex_07a_ack_data_tx">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_07a_ack_data_tx/ack_data_tx.c" />
+        </folder>
+        <folder Name="ex_07b_ack_data_rx">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_07b_ack_data_rx/ack_data_rx.c" />
+        </folder>
+        <folder Name="ex_13a_gpio">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_13a_gpio/gpio_example.c" />
+        </folder>
+        <folder Name="ex_01d_tx_timed_sleep">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_01d_tx_timed_sleep/tx_timed_sleep.c" />
+        </folder>
+        <folder Name="ex_03d_tx_wait_resp_interrupts">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_03d_tx_wait_resp_interrupts/tx_wait_resp_int.c" />
+        </folder>
+        <folder Name="ex_03a_tx_wait_resp">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_03a_tx_wait_resp/tx_wait_resp.c" />
+        </folder>
+        <folder Name="ex_03b_rx_send_resp">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_03b_rx_send_resp/rx_send_resp.c" />
+        </folder>
+        <folder Name="ex_01b_tx_sleep">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_01b_tx_sleep/tx_sleep.c" />
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_01b_tx_sleep/tx_sleep_idleRC.c" />
+        </folder>
+        <folder Name="ex_01c_tx_sleep_auto">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_01c_tx_sleep_auto/tx_sleep_auto.c" />
+        </folder>
+        <folder Name="ex_01e_tx_with_cca">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_01e_tx_with_cca/tx_with_cca.c" />
+        </folder>
+        <folder Name="ex_01g_simple_tx_sts_sdc">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_01g_simple_tx_sts_sdc/simple_tx_sts_sdc.c" />
+        </folder>
+        <folder Name="ex_01i_simple_tx_aes">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_01i_simple_tx_aes/simple_tx_aes.c" />
+        </folder>
+        <folder Name="ex_02c_rx_diagnostics">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_02c_rx_diagnostics/rx_diagnostics.c" />
+        </folder>
+        <folder Name="ex_02d_rx_sniff">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_02d_rx_sniff/rx_sniff.c" />
+        </folder>
+        <folder Name="ex_02f_rx_with_crystal_trim">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_02f_rx_with_crystal_trim/rx_with_xtal_trim.c" />
+        </folder>
+        <folder Name="ex_02g_simple_rx_sts_sdc">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_02g_simple_rx_sts_sdc/simple_rx_sts_sdc.c" />
+        </folder>
+        <folder Name="ex_02i_simple_rx_aes">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_02i_simple_rx_aes/simple_rx_aes.c" />
+        </folder>
+        <folder Name="ex_05a_ds_twr_init">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_05a_ds_twr_init/ds_twr_initiator.c" />
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_05a_ds_twr_init/ds_twr_initiator_sts.c" />
+        </folder>
+        <folder Name="ex_05b_ds_twr_resp">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_05b_ds_twr_resp/ds_twr_responder.c" />
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_05b_ds_twr_resp/ds_twr_responder_sts.c" />
+        </folder>
+        <folder Name="ex_05c_ds_twr_init_sts_sdc">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_05c_ds_twr_init_sts_sdc/ds_twr_sts_sdc_initiator.c" />
+        </folder>
+        <folder Name="ex_05d_ds_twr_resp_sts_sdc">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_05d_ds_twr_resp_sts_sdc/ds_twr_sts_sdc_responder.c" />
+        </folder>
+        <folder Name="ex_06e_AES_ss_twr_initiator">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_06e_AES_ss_twr_initiator/ss_aes_twr_initiator.c" />
+        </folder>
+        <folder Name="ex_06f_AES_ss_twr_responder">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_06f_AES_ss_twr_responder/ss_aes_twr_responder.c" />
+        </folder>
+        <folder Name="ex_11a_spi_crc">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_11a_spi_crc/spi_crc.c" />
+        </folder>
+        <folder Name="ex_14_otp_write">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_14_otp_write/otp_write.c" />
+        </folder>
+        <folder Name="ex_15_le_pend">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_15_le_pend/le_pend_rx.c" />
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_15_le_pend/le_pend_tx.c" />
+        </folder>
+        <folder Name="ex_16_pll_cal">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_16_pll_cal/pll_cal.c" />
+        </folder>
+        <folder Name="ex_17_bw_cal">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_17_bw_cal/bandwidth_calibration.c" />
+        </folder>
+        <folder Name="ex_02e_rx_dbl_buff">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_02e_rx_dbl_buff/double_buffer_rx.c" />
+        </folder>
+        <folder Name="ex_18_timer">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_18_timer/timer_example.c" />
+        </folder>
+        <folder Name="MAC_802_15_4">
+          <file file_name="$(DW3000APIDir)/Src/MAC_802_15_4/mac_802_15_4.c" />
+        </folder>
+        <folder Name="MAC_802_15_8">
+          <file file_name="$(DW3000APIDir)/Src/MAC_802_15_8/mac_802_15_8.c" />
+        </folder>
+        <file file_name="$(DW3000APIDir)/Src/config_options.c" />
+        <folder Name="ex_19_tx_power_adjusment">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_19_tx_power_adjustment/tx_power_adjustment_example.c" />
+        </folder>
+        <folder Name="ex_20_simple_aes">
+          <file file_name="$(DW3000APIDir)/Src/examples/ex_20_simple_aes/simple_aes.c" />
+        </folder>
+      </folder>
+      <folder Name="SDK">
+        <folder Name="nRF_Libraries">
+          <file file_name="$(NordicSDKDir)/components/libraries/util/app_error_handler_gcc.c" />
+          <file file_name="$(NordicSDKDir)/components/libraries/util/app_error_weak.c" />
+          <file file_name="$(NordicSDKDir)/components/libraries/log/src/nrf_log_frontend.c" />
+          <file file_name="$(NordicSDKDir)/components/libraries/strerror/nrf_strerror.c" />
+          <file file_name="$(NordicSDKDir)/components/libraries/util/app_error.c" />
+          <file file_name="$(NordicSDKDir)/components/libraries/atomic/nrf_atomic.c" />
+          <file file_name="$(NordicSDKDir)/components/libraries/util/app_util_platform.c" />
+          <file file_name="$(NordicSDKDir)/components/libraries/memobj/nrf_memobj.c" />
+          <file file_name="$(NordicSDKDir)/components/libraries/balloc/nrf_balloc.c" />
+        </folder>
+        <folder Name="nRF_Common">
+          <file file_name="$(NordicSDKDir)/modules/nrfx/mdk/system_nrf52840.c" />
+          <file file_name="$(NordicSDKDir)/components/boards/boards.c" />
+        </folder>
+        <folder Name="nRF_Drivers">
+          <file file_name="$(NordicSDKDir)/modules/nrfx/drivers/src/nrfx_spi.c" />
+          <file file_name="$(NordicSDKDir)/integration/nrfx/legacy/nrf_drv_spi.c" />
+          <file file_name="$(NordicSDKDir)/modules/nrfx/drivers/src/prs/nrfx_prs.c" />
+          <file file_name="$(NordicSDKDir)/modules/nrfx/drivers/src/nrfx_spim.c" />
+          <file file_name="$(NordicSDKDir)/modules/nrfx/drivers/src/nrfx_gpiote.c" />
+          <file file_name="$(NordicSDKDir)/integration/nrfx/legacy/nrf_drv_clock.c" />
+          <file file_name="$(NordicSDKDir)/modules/nrfx/drivers/src/nrfx_clock.c" />
+        </folder>
+      </folder>
+      <folder Name="Shared">
+        <folder Name="dwt_uwb_driver">
+          <folder Name="Inc">
+            <file file_name="../../Shared/dwt_uwb_driver/Inc/deca_device_api.h" />
+            <file file_name="../../Shared/dwt_uwb_driver/Inc/deca_interface.h" />
+            <file file_name="../../Shared/dwt_uwb_driver/Inc/deca_types.h" />
+            <file file_name="../../Shared/dwt_uwb_driver/Inc/deca_version.h" />
+          </folder>
+        </folder>
+      </folder>
+    </folder>
+    <folder Name="System">
+      <file file_name="$(StudioDir)/source/thumb_crt0.s" />
+      <file file_name="$(NordicSDKDir)/modules/nrfx/mdk/ses_startup_nrf52840.s" />
+      <file file_name="$(NordicSDKDir)/modules/nrfx/mdk/ses_startup_nrf_common.s" />
+    </folder>
+    <configuration
+      Name="Debug"
+      debug_register_definition_file="$(NordicSDKDir)/modules/nrfx/mdk/nrf52840.svd" />
+  </project>
+  <configuration
+    Name="Debug"
+    c_preprocessor_definitions="DEBUG"
+    gcc_debugging_level="Level 3"
+    gcc_optimization_level="None" />
+  <configuration
+    Name="Release"
+    c_preprocessor_definitions="NDEBUG"
+    gcc_debugging_level="None"
+    gcc_omit_frame_pointer="Yes"
+    gcc_optimization_level="Level 1" />
+</solution>
