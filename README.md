@@ -11,6 +11,8 @@ A firmware for the [Qorvo DWM3001C](https://www.qorvo.com/products/p/DWM3001C) w
 
 The firmware and instructions in this repository somewhat assume that you're using the DWM3001CDK (the official DWM3001C devkit), but you can also run it on a standalone DWM3001C simply by not using the definitions for the devkit's onboard LEDs, button, and SEGGER J-Link (see `Src/custom_board.h`).
 
+**See also:** if you're looking for a fully-featured firmware that you just need some minor customizations for, check out my [DWM3001CDK demo firmware repository](https://github.com/Uberi/DWM3001CDK-demo-firmware).
+
 Quickstart
 ----------
 
